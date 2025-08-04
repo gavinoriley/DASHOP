@@ -71,24 +71,29 @@
 
         .paypal-container {
             position: absolute;
-            top: calc(50% + 300px + 20px); /* Matches previous PayPal form position */
+            top: calc(50% + 300px + 20px);
             left: 50%;
             transform: translateX(-50%);
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 10px; /* Space between PayPal form and text */
+            gap: 10px;
             text-align: center;
         }
 
         .page-purpose {
             width: 800px;
-            font-size: 16px;
+            font-size: 24px; /* Increased from 16px */
             color: #fff;
         }
 
         .paypal-form {
             text-align: center;
+        }
+
+        .paypal-form input[type="image"] {
+            width: 200px; /* Increased button size */
+            height: auto; /* Maintain aspect ratio */
         }
 
         .image-container {
