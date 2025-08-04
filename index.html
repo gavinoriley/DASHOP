@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DA SHOP!</title>
     <link rel="preload" href="/assets/FSEX300.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://gavinoriley.github.io/assets/shirtprev.png" as="image">
     <style>
         @font-face {
             font-family: 'FSEX300';
@@ -86,21 +87,33 @@
             transform: translateX(-50%);
         }
 
-        .shirt-image {
+        .image-container {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            max-width: 600px; /* Increased size for better clarity */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .shirt-image {
+            max-width: 600px; /* Maintained larger size */
+            width: 600px; /* Explicit width to reserve space */
+            animation: none; /* Animation applied via JavaScript after load */
+        }
+
+        .shirt-image.loaded {
             animation: jiggle 2s ease-in-out infinite;
         }
 
         @keyframes jiggle {
-            0% { transform: translate(-50%, -50%) rotate(0deg); }
-            25% { transform: translate(-50%, -50%) rotate(2deg); }
-            50% { transform: translate(-50%, -50%) rotate(0deg); }
-            75% { transform: translate(-50%, -50%) rotate(-2deg); }
-            100% { transform: translate(-50%, -50%) rotate(0deg); }
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(0, 0) rotate(2deg); }
+            50% { transform: translate(0, 0) rotate(0deg); }
+            75% { transform: translate(0, 0) rotate(-2deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
         }
     </style>
 </head>
@@ -112,7 +125,9 @@
         <a href="https://itch.io/embed-upload/13425866?color=333333" target="_blank">PLAY IN BROWSER</a>
     </nav>
 
-    <img src="https://gavinoriley.github.io/assets/shirtprev.png" alt="Shirt Preview" class="shirt-image">
+    <div class="image-container">
+        <img src="https://gavinoriley.github.io/assets/shirtprev.png" alt="Shirt Preview" class="shirt-image" onload="this.classList.add('loaded')">
+    </div>
 
     <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="paypal-form">
         <input type="hidden" name="cmd" value="_s-xclick" />
