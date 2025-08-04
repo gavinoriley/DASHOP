@@ -69,23 +69,39 @@
             color: #cccc00;
         }
 
-        .paypal-container {
+        .image-container {
             position: absolute;
-            top: calc(50% + 300px + 20px);
+            top: 50%;
             left: 50%;
-            transform: translateX(-50%);
+            transform: translate(-50%, -50%);
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 10px;
-            text-align: center;
+            gap: 20px;
             z-index: 10;
         }
 
-        .page-purpose {
-            width: 800px;
+        .shirt-image {
+            max-width: 600px;
+            width: 600px;
+            cursor: zoom-in;
+        }
+
+        .shirt-image.loaded {
+            animation: jiggle 2s ease-in-out infinite;
+        }
+
+        .welcome-text {
             font-size: 24px;
             color: #fff;
+            text-align: center;
+        }
+
+        .paypal-container {
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            z-index: 10;
         }
 
         .paypal-form {
@@ -97,39 +113,32 @@
             height: auto;
         }
 
-        .image-container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 10;
-        }
-
-        .shirt-image {
-            max-width: 600px;
-            width: 600px;
-            animation: none;
-            cursor: pointer; /* Indicate clickability */
-        }
-
-        .shirt-image.loaded {
-            animation: jiggle 2s ease-in-out infinite;
-        }
-
-        .shirt-image.fullscreen {
+        .fullscreen-container {
+            display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            max-width: none; /* Remove max-width constraint */
-            object-fit: contain; /* Maintain aspect ratio */
-            background: rgba(0, 0, 0, 0.9); /* Dark background for contrast */
-            z-index: 200; /* Above all other elements */
-            animation: none; /* Disable jiggle in fullscreen */
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 200;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .fullscreen-image {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: red;
+            font-size: 30px;
+            cursor: pointer;
         }
 
         @keyframes jiggle {
@@ -151,6 +160,7 @@
 
     <div class="image-container">
         <img src="https://gavinoriley.github.io/assets/shirtprev.png" alt="Shirt Preview" class="shirt-image" onload="this.classList.add('loaded')">
+        <div class="welcome-text">WELCOME TO DA SHOP! BUY A SHIRT?</div>
     </div>
 
     <div class="paypal-container">
@@ -180,12 +190,26 @@
             <input type="hidden" name="currency_code" value="USD" />
             <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Buy Now" />
         </form>
-        <div class="page-purpose">WELCOME TO DA SHOP! BUY A SHIRT?</div>
+    </div>
+
+    <div class="fullscreen-container">
+        <img src="https://gavinoriley.github.io/assets/shirtprev.png" alt="Shirt Preview" class="fullscreen-image">
+        <div class="close-button">X</div>
     </div>
 
     <script>
         document.querySelector('.shirt-image').addEventListener('click', function() {
-            this.classList.toggle('fullscreen');
+            document.querySelector('.fullscreen-container').style.display = 'flex';
+        });
+
+        document.querySelector('.fullscreen-container').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.style.display = 'none';
+            }
+        });
+
+        document.querySelector('.close-button').addEventListener('click', function() {
+            document.querySelector('.fullscreen-container').style.display = 'none';
         });
     </script>
 </body>
