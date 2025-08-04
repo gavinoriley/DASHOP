@@ -1,1 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>developer room</title>
+    <link rel="preload" href="/assets/FSEX300.woff2" as="font" type="font/woff2" crossorigin>
+    <style>
+        @font-face {
+            font-family: 'FSEX300';
+            src: url('/assets/FSEX300.woff2') format('woff2'),
+                 url('/assets/FSEX300.woff') format('woff'),
+                 url('/assets/FSEX300.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'FSEX300', Arial, sans-serif;
+            cursor: url('https://gavinoriley.github.io/assets/sprCursor_3.png'), auto;
+        }
+
+        body {
+            background: #000000;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #1a2a6c;
+            padding: 12px 0;
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            z-index: 100;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 26px;
+            text-shadow: 1px 1px 2px black;
+        }
+
+        .navbar a:hover {
+            color: #ddd;
+        }
+
+        .navbar a.devlog-link {
+            color: #ffff00;
+        }
+
+        .navbar a.devlog-link:hover {
+            color: #cccc00;
+        }
+
+        .page-purpose {
+            width: 800px;
+            text-align: center;
+            font-size: 16px;
+            color: #fff;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .paypal-form {
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="https://hamachithepsychotickiller.com">HOME</a>
+        <a href="https://store.steampowered.com/app/3355690/Hamachi_the_Psychotic_Killer/" target="_blank">BUY EARLY ACCESS</a>
+        <a href="https://store.steampowered.com/news/app/3355690/view/520845543638827040" target="_blank" class="devlog-link">NEWS</a>
+        <a href="https://itch.io/embed-upload/13425866?color=333333" target="_blank">PLAY IN BROWSER</a>
+    </nav>
+
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="paypal-form">
+        <input type="hidden" name="cmd" value="_s-xclick" />
+        <input type="hidden" name="hosted_button_id" value="GCE6SW4TSXVZ8" />
+        <input type="hidden" name="currency_code" value="USD" />
+        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Buy Now" />
+    </form>
+    <div class="page-purpose">WELCOME TO DA SHOP! BUY A SHIRT?</div>
+</body>
+</html>
